@@ -12,24 +12,36 @@ function refreshQuote() {
   document.getElementById("quoteText").innerText = quote;
 }
 
-function generateCustomQuote() {
-  let mood = document.getElementById("moodSelect").value;
-  let goal = document.getElementById("goalSelect").value;
-  let tone = document.getElementById("toneSelect").value;
-
-  let customQuote = `Stay ${tone.toLowerCase()} and keep working on your ${goal.toLowerCase()}, even when you're feeling ${mood.toLowerCase()}.`;
-  if (
-    goal === "Select a goal" ||
-    mood === "Select a mood" ||
-    tone === "Select a tone"
-  ) {
-    customQuote = "You are capable of amazing things.";
-  }
-
-  document.getElementById("quoteText").innerText = customQuote;
-}
-
 function shareQuote() {
-  let quote = document.getElementById("quoteText").innerText;
+  let quote = document.querySelector("#quoteText").innerText;
   alert("Pretend this shares the quote: \n\n" + quote);
 }
+
+function displayQuote(response) {
+  new Typewriter("#quoteText", {
+    strings: response.data.answer,
+    autoStart: true,
+    delay: 1,
+    cursor: "",
+  });
+}
+
+function generateCustomQuote(event) {
+  event.preventDefault();
+
+  let instructionsInput = document.querySelector("#user-instructions");
+  let apiKey = "c4efdbtoc0e93fda0c4d6e83f5f34a37";
+  let context =
+    "You are a Motivational Quote expert and love to write short quotes. Your mission is to generate a quote in basic HTML. Make sure to follow the user instructions.";
+  let prompt = `User instructions: Generate a motivational quote about ${instructionsInput.value}`;
+  let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  let quoteElement = document.querySelectorAll("#quoteText");
+  quoteElement.classlist.remove("quote");
+  customQuote.innerHTML = `⏳ Generating a Motivational Quote for you ${instructionsInput.value}</div>`;
+
+  axios.get(apiURL).then(displayQuote);
+}
+
+let quoteFormElement = document.querySelector("#customQuote");
+quoteFormElement.addEventListener("submit", generateCustomQuote);

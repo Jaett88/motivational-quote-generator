@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@500&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
     <title>AI Quote Generator</title>
   </head>
   <body>
@@ -25,28 +27,18 @@
       <button onclick="shareQuote()">Share</button>
 
       <div class="section-title">Let’s inspire you better.</div>
-      <select id="moodSelect">
-        <option>Select a mood</option>
-        <option>Happy</option>
-        <option>Tired</option>
-        <option>Stressed</option>
-        <option>Ambitious</option>
-      </select>
-      <select id="goalSelect">
-        <option>Select a goal</option>
-        <option>Fitness</option>
-        <option>Career</option>
-        <option>Study</option>
-        <option>Confidence</option>
-      </select>
-      <select id="toneSelect">
-        <option>Select a tone</option>
-        <option>Gentle</option>
-        <option>Bold</option>
-        <option>Funny</option>
-        <option>Classic</option>
-      </select>
-      <button onclick="generateCustomQuote()">Generate New Quote</button>
+      <form id="customQuote">
+        <input
+          type="text"
+          placeholder="Enter the goal of your motivational quote"
+          autofocus
+          required
+          autocomplete="off"
+          class="instructions"
+          id="user-instructions"
+        />
+        <input type="submit" value="Generate New Quote" class="generateQuote" />
+      </form>
 
       <div class="section-title">Today’s Focus</div>
       <div class="focus-box">

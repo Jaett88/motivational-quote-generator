@@ -9,6 +9,10 @@ body {
   color: #2d2d2d;
 }
 
+a {
+  color: #555;
+}
+
 .container {
   background: linear-gradient(to bottom, #ffe5b4, #cde9ff);
   padding: 40px;
@@ -66,6 +70,31 @@ select {
 .section-title {
   margin-top: 40px;
   font-weight: bold;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
+}
+
+.instructions {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #444;
+  width: 80%;
+  text-align: center;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.generateQuote {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #444;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .focus-box {
@@ -78,6 +107,6 @@ select {
 
 footer {
   margin-top: 30px;
-  font-size: 14px;
+  font-size: 12px;
   color: #999;
 }
