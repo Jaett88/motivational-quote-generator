@@ -32,13 +32,13 @@ function generateCustomQuote(event) {
   let instructionsInput = document.querySelector("#user-instructions");
   let apiKey = "c4efdbtoc0e93fda0c4d6e83f5f34a37";
   let context =
-    "You are a Motivational Quote expert and love to write short quotes. Your mission is to generate a quote in basic HTML. Make sure to follow the user instructions.";
+    "You are a Motivational Quote expert and love to write short quotes. Your mission is to generate a quote. Make sure to follow the user instructions.";
   let prompt = `User instructions: Generate a motivational quote about ${instructionsInput.value}`;
   let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-  let quoteElement = document.querySelectorAll("#quoteText");
-  quoteElement.classlist.remove("quote");
-  customQuote.innerHTML = `⏳ Generating a Motivational Quote for you ${instructionsInput.value}</div>`;
+  let quoteElement = document.querySelector("#quoteText");
+  quoteElement.classList.remove("quote");
+  customQuote.innerHTML = `⏳ Generating a Motivational Quote for you about ${instructionsInput.value}</div>`;
 
   axios.get(apiURL).then(displayQuote);
 }
